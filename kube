@@ -1,0 +1,5 @@
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+alias k="kubectl"
+alias pods="kubectl get po"
+alias ingress="kubectl get ing"

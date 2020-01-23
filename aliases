@@ -1,0 +1,55 @@
+alias python="python3"
+alias serve="python3 -m http.server"
+
+alias cd..="cd .."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias ll="ls -lh"
+alias la='ls -lAh'
+
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+alias shrug="echo '¯\_(ツ)_/¯' | pbcopy";
+alias fight="echo '(ง'̀-'́)ง' | pbcopy";
+alias tableflip="echo '(ノಠ益ಠ)ノ彡┻━┻' | pbcopy";
+
+alias reloadcli="source $HOME/.zshrc"
+
+alias df="df -h"
+alias diskusage="df"
+alias fu="du -ch"
+alias folderusage="fu"
+alias tfu="du -sh"
+alias totalfolderusage="tfu"
+
+alias finder='open -a 'Finder' .'
+
+alias hosts="sudo vi /etc/hosts"
+
+alias fuck="sudo !!"
+alias fucking="sudo "
+
+alias projects="cd ~/Develop"
+alias V5="cd ~/Develop/V5"
+alias V4="cd ~/Develop/V4"
+
+alias getpass="openssl rand -base64 20 | pbcopy"
+
+# Functions
+mkcdir ()
+{
+    mkdir -p -- "$1" &&
+    cd -P -- "$1"
+}
+
+function cl() {
+    DIR="$*";
+        if [ $# -lt 1 ]; then 
+                DIR=$HOME;
+    fi;
+    builtin cd "${DIR}" && \
+        ll
+}

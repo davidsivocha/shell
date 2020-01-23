@@ -1,0 +1,10 @@
+#Git
+alias burnitall="git reset --hard && git clean -df"
+
+alias g="git"
+alias gi="git init"
+alias gra="git remote add "
+alias gr="git reset HEAD --hard"
+alias gs="git status"
+alias gcm="git commit -m "
+
