@@ -12,9 +12,11 @@ alias la='ls -lAh'
 
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-alias shrug="echo '¯\_(ツ)_/¯' | pbcopy";
-alias fight="echo '(ง'̀-'́)ง' | pbcopy";
-alias tableflip="echo '(ノಠ益ಠ)ノ彡┻━┻' | pbcopy";
+alias shrug="echo '¯\_(ツ)_/¯' | pbcopy && echo '¯\_(ツ)_/¯'";
+alias fight="echo '(ง •̀_•́)ง' | pbcopy && echo '(ง •̀_•́)ง'";
+alias tableflip="echo '(ノಠ益ಠ)ノ彡┻━┻' | pbcopy && echo '(ノಠ益ಠ)ノ彡┻━┻'";
+alias unflip="echo '┬─┬ノ( º _ ºノ)' | pbcopy && echo '┬─┬ノ( º _ ºノ)'";
+alias flipglenn="echo '(╯°Д°)╯︵/(.□ . \)' | pbcopy && echo '(╯°Д°)╯︵/(.□ . \)'";
 
 alias reloadcli="source $HOME/.zshrc"
 
@@ -45,7 +47,8 @@ mkcdir ()
     cd -P -- "$1"
 }
 
-function cl() {
+function cl()
+{
     DIR="$*";
         if [ $# -lt 1 ]; then 
                 DIR=$HOME;
