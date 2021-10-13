@@ -10,7 +10,7 @@ alias .....="cd ../../../.."
 alias ll="ls -lh"
 alias la='ls -lAh'
 
-alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com -4'
 
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy && echo '¯\_(ツ)_/¯'";
 alias fight="echo '(ง •̀_•́)ง' | pbcopy && echo '(ง •̀_•́)ง'";
@@ -31,12 +31,10 @@ alias finder='open -a 'Finder' .'
 
 alias hosts="sudo vi /etc/hosts"
 
-alias fuck="sudo !!"
+alias sudo="sudo "
 alias fucking="sudo "
 
-alias projects="cd ~/Develop"
-alias V5="cd ~/Develop/V5"
-alias V4="cd ~/Develop/V4"
+alias projects="cd ~/Repositories"
 
 alias getpass="openssl rand -base64 20 | pbcopy"
 
@@ -56,3 +54,17 @@ function cl()
     builtin cd "${DIR}" && \
         ll
 }
+
+function elevate_last_command() {
+    # Check if running with ZSH history verification
+    if [ -z ${HIST_VERIFY+x} ]; then
+        setopt no_histverify
+        sudo `fc -ln -1`
+        setopt histverify
+    else
+        sudo `fc -ln -1`
+    fi
+}
+
+# Assign an alias to the function
+alias fuck=elevate_last_command
