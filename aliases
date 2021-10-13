@@ -36,7 +36,7 @@ alias fucking="sudo "
 
 alias projects="cd ~/Repositories"
 
-alias getpass="openssl rand -base64 20 | pbcopy"
+alias getpass="openssl rand -base64 45 | pbcopy"
 
 # Functions
 mkcdir ()
