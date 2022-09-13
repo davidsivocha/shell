@@ -27,8 +27,6 @@ alias folderusage="fu"
 alias tfu="du -sh"
 alias totalfolderusage="tfu"
 
-alias finder='open -a 'Finder' .'
-
 alias hosts="sudo vi /etc/hosts"
 
 alias sudo="sudo "
@@ -68,3 +66,13 @@ function elevate_last_command() {
 
 # Assign an alias to the function
 alias fuck=elevate_last_command
+
+#Mac Specific Aliases
+if [[ `uname` == "Darwin" ]]; then
+    alias ports='sudo lsof -i -P | grep LISTEN'
+    alias v4ports='sudo lsof -nP -i4TCP:$PORT | grep LISTEN'
+
+    alias finder='open -a 'Finder' .'
+else
+    alias ports='netstat -tulanp'
+fi
