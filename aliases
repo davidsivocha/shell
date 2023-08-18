@@ -1,6 +1,8 @@
 alias python="python3"
 alias serve="python3 -m http.server"
 
+alias develop="./develop"
+
 alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."

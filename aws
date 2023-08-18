@@ -1,1 +1,22 @@
+function change_ip_address() {
+  PUBLICIP=$(dig +short myip.opendns.com @resolver1.opendns.com -4)
+  PUBLICCIDR="${PUBLICIP}/32"
+  SEARCHSTRING=$AWS_SSH_NAME
+  SECURITYGROUPID=$AWS_SSH_GROUP_ID
+  PROTOCOL="tcp"
+  PORT=22
 
+  QUERYSTRING=".SecurityGroups[].IpPermissions[].IpRanges[] | select(.Description != null) | select(.Description|test(\"^${SEARCHSTRING}\$\")) | .CidrIp"
+
+  ORIGINALCIDR=$(aws ec2 describe-security-groups --group-ids $SECURITYGROUPID | jq $QUERYSTRING)
+
+  if [ ! -z "$ORIGINALCIDR" ]
+  then
+    ORIGCIDR=$(echo $ORIGINALCIDR | xargs)
+    aws ec2 revoke-security-group-ingress --group-id $SECURITYGROUPID --cidr $ORIGCIDR --protocol $PROTOCOL --port $PORT
+  fi
+
+  PUBCIDR=$(echo $PUBLICCIDR | xargs)
+  aws ec2 authorize-security-group-ingress --group-id $SECURITYGROUPID --ip-permissions 
+  IpProtocol=${PROTOCOL},FromPort=$PORT,ToPort=${PORT},IpRanges="[{CidrIp=${PUBCIDR},Description=\"${SEARCHSTRING}\"}]"
+}
